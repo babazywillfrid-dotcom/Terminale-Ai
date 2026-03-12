@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Terminale AI - Succès</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+    <!-- Ecran de Login -->
+    <div id="login-screen" class="active">
+        <div class="glass-card fade-in">
+            <div class="logo">🎓 Terminale AI</div>
+            <h2>Connexion</h2>
+            <input type="text" id="username" placeholder="Nom d'utilisateur">
+            <input type="password" id="password" placeholder="Mot de passe">
+            <button onclick="handleLogin()">Entrer</button>
+            <p id="login-error">Identifiants incorrects</p>
+        </div>
+    </div>
+
+    <!-- Application Principale -->
+    <div id="main-app">
+        <nav>
+            <div class="nav-logo">Terminale AI</div>
+            <button onclick="logout()" class="logout-btn">Quitter</button>
+        </nav>
+
+        <main class="container">
+            <div class="input-section glass-card">
+                <select id="subject-select">
+                    <option value="Mathématiques">Mathématiques</option>
+                    <option value="Physique-Chimie">Physique-Chimie</option>
+                    <option value="SVT">SVT</option>
+                    <option value="Philosophie">Philosophie</option>
+                    <option value="Histoire-Géographie">Histoire-Géographie</option>
+                    <option value="Anglais">Anglais</option>
+                </select>
+
+                <div class="textarea-wrapper">
+                    <textarea id="exercise-text" placeholder="Écris ton énoncé ou utilise l'appareil photo..."></textarea>
+                    <label for="camera-input" class="camera-btn">
+                        📷
+                        <input type="file" id="camera-input" accept="image/*" capture="environment">
+                    </label>
+                </div>
+
+                <div class="btn-group">
+                    <button id="solve-btn" onclick="solveExercise()">Résoudre l'exercice</button>
+                    <button class="clear-btn" onclick="clearInput()">Effacer</button>
+                </div>
+            </div>
+
+            <div id="loader" class="hidden">
+                <div class="spinner"></div>
+                <p>L'IA analyse ton devoir...</p>
+            </div>
+
+            <div id="result-display" class="glass-card hidden">
+                <div class="result-header">
+                    <h3>Solution Détaillée</h3>
+                    <button onclick="copyResult()">Copier</button>
+                </div>
+                <div id="result-content"></div>
+            </div>
+
+            <div class="history-section glass-card">
+                <h3>Historique</h3>
+                <div id="history-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
